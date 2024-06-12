@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#CDC9CD"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".Signup_Page">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:focusable="true">
+
+        <EditText
+            android:id="@+id/sigunp_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email "
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:background="@color/white"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:focusable="true"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/sigunp_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password "
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:background="@color/white"
+            android:inputType="numberPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:focusable="true">
+
+        <EditText
+            android:id="@+id/confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Confirm Password "
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:background="@color/white"
+            android:inputType="numberPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+<Button
+    android:id="@+id/signup_btn"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginTop="30dp"
+    android:text="Signup"
+    android:textSize="20sp"/>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:gravity="center"
+       android:layout_marginTop="30dp"
+       >
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="already signup "
+           android:textSize="22sp"
+           android:textColor="@color/white"
+           />
+       <TextView
+           android:id="@+id/login_txt"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Login "
+           android:textSize="22sp"
+           android:textColor="#0963F8"/>
+   </LinearLayout>
+</LinearLayout>
