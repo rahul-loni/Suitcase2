@@ -43,8 +43,8 @@ public class Splash_Screen extends AppCompatActivity {
          @Override
          public void run() {
          try {
-             sleep(7000);
-             Intent intent=new Intent(Splash_Screen.this,MainActivity.class);
+             sleep(3000);
+             Intent intent=new Intent(Splash_Screen.this, Signup_Page.class);
              startActivity(intent);
          }catch (InterruptedException e){
            e.printStackTrace();

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter Email "
             android:textSize="22sp"
-            android:textColor="@color/white"
+
             android:background="@color/white"
             android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter Password "
             android:textSize="22sp"
-            android:textColor="@color/white"
+
             android:background="@color/white"
             android:inputType="numberPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter Confirm Password "
             android:textSize="22sp"
-            android:textColor="@color/white"
+            
             android:background="@color/white"
             android:inputType="numberPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
