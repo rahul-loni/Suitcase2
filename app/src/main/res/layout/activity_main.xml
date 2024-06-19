@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#98918B"
-    android:gravity="center"
+    tools:openDrawer="start"
+    android:background="#747474"
+    android:padding="8dp"
     tools:context=".MainActivity">
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_manu"
+        android:layout_gravity="start"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff">
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00008577"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:navigationIcon="@drawable/baseline_add_home_24"/>
 
-   <ImageView
-       android:layout_width="200dp"
-       android:layout_height="200dp"
-       android:src="@drawable/facce"
-       />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:fontFamily="@font/arbutus"
-       android:text="Welcome my Application "
-       android:textColor="@color/white"
-       android:textSize="24sp"
-       android:textStyle="bold"
-       android:layout_marginTop="20dp"/>
 
-</LinearLayout>
+        </ScrollView>
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
