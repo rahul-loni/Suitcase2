@@ -1,6 +1,7 @@
 package com.example.suitcase2.Adapter;
 
 import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,18 @@ public class Items_Adapter extends RecyclerView.Adapter<Items_Adapter.ItemViewHo
     @Override
     public void onBindViewHolder(@NonNull Items_Adapter.ItemViewHolder holder, int position) {
      ItemsModel itemsModel=itemsModels.get(position);
+     holder.txt_name.setText(itemsModel.getName());
+     if (itemsModel.isPurchased()){
+         holder.txt_name.setCompoundDrawablesWithIntrinsicBounds
+                 (0,0,R.drawable.ic_check,0);
+
+     }
+     holder.txt_price.setText(String.valueOf(itemsModel.getPrice()));
+     holder.txt_Description.setText(itemsModel.getDescription());
+     Uri.imageUri=itemsModel.getImage();
+     if(imageUri !=null){
+         holder.imageView.getImageURI(imageUri);
+     }
 
     }
 
