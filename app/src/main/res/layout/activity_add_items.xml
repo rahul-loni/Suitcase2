@@ -8,8 +8,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/black"
-    android:padding="20dp"
+    android:background="@color/grayscale"
+    android:padding="10dp"
     tools:context=".Add_Items">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -29,15 +29,15 @@
             android:text="Add Item Page "
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="30sp"
-            android:padding="20dp"
+            android:textSize="20sp"
+            android:padding="10dp"
             android:background="@drawable/edit_rounded"
             />
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/add_img"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:id="@+id/add_item_img"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:src="@drawable/add"
             app:civ_border_width="2dp"
             app:civ_border_color="#FF000000"
@@ -74,7 +74,29 @@
             android:textColor="@color/black"
             android:inputType="text"
             android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                >
+                <TextView
+                    android:id="@+id/txt_map"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bharatpur-10 chitwan nepal"
+                    android:textSize="16dp"
+                    android:textColor="@color/black"/>
+                <ImageView
+                    android:id="@+id/img_map"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/map"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
         <Button
+            android:id="@+id/btn_add_items"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="Add Items"

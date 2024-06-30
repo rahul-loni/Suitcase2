@@ -41,6 +41,9 @@ dependencies {
     implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("com.github.Dhaval2404:ImagePicker:v2.1")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
+    implementation ("com.github.User:Repo:1.0.0")
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
