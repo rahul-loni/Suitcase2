@@ -44,9 +44,9 @@ public class Items_Adapter extends RecyclerView.Adapter<Items_Adapter.ItemViewHo
      }
      holder.txt_price.setText(String.valueOf(itemsModel.getPrice()));
      holder.txt_Description.setText(itemsModel.getDescription());
-     Uri.imageUri=itemsModel.getImage();
+     Uri imageUri=itemsModel.getImage();
      if(imageUri !=null){
-         holder.imageView.getImageURI(imageUri);
+         holder.imageView.setImageURI(imageUri);
      }
 
     }

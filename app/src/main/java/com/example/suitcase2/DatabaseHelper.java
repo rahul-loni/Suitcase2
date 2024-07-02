@@ -14,31 +14,35 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    //Database name
     public static final String DB_NAME="suitcase.db";
-    public static final String ITEMS_TABLE_NAME="Items";
-    public static final String Col1="id";
-    public static final String Col2="name";
-    public static final String Col3="price";
-    public static final String Col4="description";
-    public static final String Col5="image";
-    public static final String Col6="purchased";
     public static final int DB_VERSION=1;
+    //Database Table Name
+    public static final String ITEMS_TABLE_NAME="Items";
+    //Database Columns
+    public static final String ITEM_COLUMN_ID="id";
+    public static final String ITEM_NAME="name";
+    public static final String ITEM_PRICE="price";
+    public static final String ITEM_DESCRIPTION="description";
+    public static final String ITEM_IMAGE="image";
+    public static final String ITEM_PURCHASED="purchased";
+
 
 
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, 1);
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String itemstableQuery=" CREATE TABLE " +ITEMS_TABLE_NAME + "(" +
-                Col1 + "INTEGER PRIMARY KEY AUTOINCREMENT ," +
-                Col2 +" TEXT NOT NULL , "+
-                Col3 +" TEXT NOT NULL ,"+
-                Col4 +" TEXT NOT NULL ,"+
-                Col5 +" TEXT NOT NULL ," +
-                Col6 +" TEXT NOT NULL ," + "INTEGER)";
+                ITEM_COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT ," +
+                ITEM_NAME +" TEXT NOT NULL , "+
+                ITEM_PRICE +" TEXT NOT NULL ,"+
+                ITEM_DESCRIPTION +" TEXT NOT NULL ,"+
+                ITEM_IMAGE +" TEXT NOT NULL ," +
+                ITEM_PURCHASED +" TEXT NOT NULL ," + "INTEGER)";
 
         try {
             sqLiteDatabase.execSQL(itemstableQuery);
@@ -52,15 +56,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " +ITEMS_TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
+    public Cursor queryData(String sqlQuery) {
+        SQLiteDatabase database = getWritableDatabase();
+        return database.rawQuery(sqlQuery, null);
+    }
     //Insert Items Database
    public Boolean insertItems(String name,
-                              String description,
                               double price,
-                              boolean purchased ,
-                              String image
+                              String description,
+                              String image,
+                              boolean purchased
+
                               ) {
         SQLiteDatabase database=getWritableDatabase();
-        String sql=" INSERT INTO " + ITEMS_TABLE_NAME + " VALUES (NULL,?,?,?,?)";
+       String sql = "INSERT INTO " + ITEMS_TABLE_NAME + " VALUES (NULL, ?, ?, ?, ?, ?)";
        SQLiteStatement statement=database.compileStatement(sql);
        statement.clearBindings();
        statement.bindString(1,name);
@@ -73,16 +82,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
        return result !=1;
    }
    //Get data from database table and column data
-    public Cursor getItemById(int id){
-        SQLiteDatabase database=getWritableDatabase();
-        String sqlQuery="SELECT * FROM "+ITEMS_TABLE_NAME + " WHERE "+ Col1 + "=?";
-        return database.rawQuery(sqlQuery, new String[]{String.valueOf(id)});
-    }
-    // get all data from database
-    public Cursor getAllData(){
-        SQLiteDatabase database=getReadableDatabase();
-        String sqlQuery="SELECT * FROM " +ITEMS_TABLE_NAME;
-        return database.rawQuery(sqlQuery,null);
+   public Cursor getItemById(int id) {
+       SQLiteDatabase database = getWritableDatabase();
+       String sqlQuery = "SELECT * FROM " + ITEMS_TABLE_NAME + " WHERE " + ITEM_COLUMN_ID + "=?";
+       return database.rawQuery(
+               sqlQuery, new String[]{String.valueOf(id)}
+       );
+   }
+
+    public Cursor getAllItem() {
+        SQLiteDatabase database = getReadableDatabase();
+        String sqlQuery = "SELECT * FROM " + ITEMS_TABLE_NAME;
+        return database.rawQuery(sqlQuery, null);
     }
     // Edit Items Method
     public Boolean update(int id,
@@ -93,22 +104,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                           boolean purchased){
         SQLiteDatabase database=getWritableDatabase();
         ContentValues cv=new ContentValues();
-        cv.put(Col2,name);
-        cv.put(Col3,price);
-        cv.put(Col4,description);
-        cv.put(Col5,image);
-        cv.put(Col6,purchased);
-        int result = database.update(ITEMS_TABLE_NAME,cv,Col1 +"=?",
-                new String[]{String.valueOf(id)});
-        Log.d("databaseHelper:","result"+result);
+        cv.put(ITEM_NAME,name);
+        cv.put(ITEM_PRICE,price);
+        cv.put(ITEM_DESCRIPTION,description);
+        cv.put(ITEM_IMAGE,image);
+        cv.put(ITEM_PURCHASED,purchased);
+        int result = database.update(ITEMS_TABLE_NAME, cv, ITEM_COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+        Log.d("Database helper:", "result: " + result);
         database.close();
-        return result !=1;
+        return result != -1;
     }
     //Delete Data from Database
-    public void deleteItem(long id){
-        SQLiteDatabase database=getWritableDatabase();
-        database.delete(ITEMS_TABLE_NAME,Col1+"=?",
-                new String[]{String.valueOf(id)});
+    public void deleteItem(long id) {
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete(
+                ITEMS_TABLE_NAME, ITEM_COLUMN_ID + "=?", new String[]{String.valueOf(id)});
     }
 
 }

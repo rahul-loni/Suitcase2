@@ -3,18 +3,20 @@ package com.example.suitcase2;
 import android.net.Uri;
 
 public class ItemsModel {
-    private String id;
+    private int id;
     private String name;
     private String description;
     private double price;
     private Uri image;
     private boolean purchased;
 
-    public String getId() {
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -31,7 +33,7 @@ public class ItemsModel {
     }
 
     public void setDescription(String description) {
-        description = description;
+        this.description = description;
     }
 
     public double getPrice() {
@@ -54,11 +56,9 @@ public class ItemsModel {
         return purchased;
     }
 
-    public void setPurchased(boolean purchased) {
+    public void setPurchased(boolean purchased)  {
         this.purchased = purchased;
     }
-
-
     public String toString () {
         return "Item{" +
                 "id=" + id +
@@ -70,3 +70,4 @@ public class ItemsModel {
                 '}';
     }
 }
+

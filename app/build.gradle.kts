@@ -39,11 +39,13 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
+    implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
+
     implementation ("de.hdodenhof:circleimageview:3.1.0")
-    implementation ("com.github.Dhaval2404:ImagePicker:v2.1")
+    implementation ("com.github.dhaval2404:imagepicker:2.1")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
-    implementation ("com.github.User:Repo:1.0.0")
+
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }

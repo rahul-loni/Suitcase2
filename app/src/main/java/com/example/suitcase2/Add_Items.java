@@ -34,7 +34,7 @@ public class Add_Items extends AppCompatActivity {
         });
         databaseHelper=new DatabaseHelper(this);
         imageUri=Uri.EMPTY;
-        pic_Image=findViewById(R.id.item_image);
+        pic_Image=findViewById(R.id.add_item_img);
         pic_map=findViewById(R.id.img_map);
         add_item=findViewById(R.id.btn_add_items);
         map_txt=findViewById(R.id.txt_map);
