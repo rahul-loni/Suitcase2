@@ -1,5 +1,7 @@
 package com.example.suitcase2;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,6 +25,9 @@ public class Add_Items extends AppCompatActivity {
      Button add_item;
      TextView map_txt;
      EditText txt_item_name,txt_item_price,txt_item_description;
+    public static Intent getIntent(Context context) {
+        return new Intent(context, Add_Items.class);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,11 +85,18 @@ public class Add_Items extends AppCompatActivity {
     }
     //Pic Image From Camera and Gallery
    private void picImage(View view){
-
+       ImagePickUtility.picImage(view, Add_Items.this);
    }
 
    //Pic Location from Google map
    private void picMap(View view){
 
    }
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (data != null) {
+            imageUri = data.getData();
+            pic_Image.setImageURI(imageUri);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

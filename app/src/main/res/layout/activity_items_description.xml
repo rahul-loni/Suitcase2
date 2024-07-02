@@ -22,6 +22,7 @@
         android:orientation="horizontal"
         android:gravity="center">
         <TextView
+            android:id="@+id/dec_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Item Name "
@@ -30,6 +31,7 @@
             android:textStyle="bold"
             />
         <TextView
+            android:id="@+id/dec_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rs.10500 "
@@ -40,6 +42,7 @@
             />
     </LinearLayout>
     <TextView
+        android:id="@+id/dec_description"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:textSize="20sp"

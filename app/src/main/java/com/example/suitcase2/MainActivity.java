@@ -141,6 +141,6 @@ public class MainActivity extends AppCompatActivity {
                         itemsModels.get(position).getId())
                 ));
        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-       recyclerView.setAdapter(itemsAdapter);
+        recyclerView.setAdapter(itemsAdapter);
     }
 }
