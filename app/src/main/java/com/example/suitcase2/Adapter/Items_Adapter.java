@@ -20,7 +20,7 @@ public class Items_Adapter extends RecyclerView.Adapter<Items_Adapter.ItemViewHo
     private final RecyclerViewItemClick recyclerViewItemClick;
     private ArrayList<ItemsModel>itemsModels;
 
-    public Items_Adapter(RecyclerViewItemClick recyclerViewItemClick, ArrayList<ItemsModel> itemsModels) {
+    public Items_Adapter(ArrayList<ItemsModel> itemsModels, RecyclerViewItemClick recyclerViewItemClick) {
         this.recyclerViewItemClick = recyclerViewItemClick;
         this.itemsModels = itemsModels;
     }
@@ -70,7 +70,7 @@ public class Items_Adapter extends RecyclerView.Adapter<Items_Adapter.ItemViewHo
         }
 
         private void itemViewOnClick(View view) {
-            recyclerViewItemClick.onItemClick(view,getAdapterPosition());
+            recyclerViewItemClick.onItemClick(view, getAdapterPosition());
         }
     }
 }

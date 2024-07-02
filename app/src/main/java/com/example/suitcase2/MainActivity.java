@@ -135,12 +135,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void setRecyclerView(){
-        itemsAdapter=new Items_Adapter(itemsModels,
-                (view ,position)->startActivity(Items_Description.getIntent(
+        itemsAdapter = new Items_Adapter(itemsModels,
+                (view ,position) -> startActivity(Items_Description.getIntent(
                         getApplicationContext(),
                         itemsModels.get(position).getId())
                 ));
        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(itemsAdapter);
+       recyclerView.setAdapter(itemsAdapter);
     }
 }
