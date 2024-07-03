@@ -65,7 +65,7 @@ FirebaseAuth firebaseAuth;
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                Intent intent=new Intent(getApplicationContext(),Login_Page.class);
+                                Intent intent=new Intent(getApplicationContext(), LoginPage.class);
                                 startActivity(intent);
                                 Toast.makeText(Signup_Page.this, "Signp Complete", Toast.LENGTH_SHORT).show();
                                 finish();

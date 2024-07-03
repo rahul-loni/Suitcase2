@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.play.services.cast.framework)
     testImplementation(libs.junit)
 
+    implementation ("com.google.android.gms:play-services-places:16.1.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")

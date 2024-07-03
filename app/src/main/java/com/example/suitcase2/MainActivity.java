@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 if (id == R.id.nav_about) {
                     Toast.makeText(MainActivity.this, "Clickto about ", Toast.LENGTH_SHORT).show();
                 }
+                if (id==R.id.nav_pur){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
                 return false;
             }
         });
@@ -67,15 +71,16 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-        itemsModels = new ArrayList<>();
+
         items_dbHelper = new DatabaseHelper(this);
+        recyclerView = findViewById(R.id.recycler);
+        fab = findViewById(R.id.fab);
         setRecyclerView();
         setupItemTouchHelper();
-        fab = findViewById(R.id.fab);
-        recyclerView=findViewById(R.id.recycler);
         fab.setOnClickListener(view -> startActivity(Add_Items.getIntent(getApplicationContext())));
 
     }
+
     private void setupItemTouchHelper() {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -101,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
                                     itemsModel.getPrice(),
                                     itemsModel.getDescription(),
                                     itemsModel.getImage().toString(),
-                                    itemsModel.isPurchased()
+                                    itemsModel.isPurchased(),
+                                    itemsModel.getLocation()
                             );
                             itemsAdapter.notifyItemChanged(position);
                             Toast.makeText(MainActivity.this, "Item is Updated ", Toast.LENGTH_SHORT).show();
@@ -111,36 +117,39 @@ public class MainActivity extends AppCompatActivity {
         );
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
     protected void onStart() {
         super.onStart();
         retrieveData();
     }
-    private void retrieveData(){
-        Cursor cursor=items_dbHelper.getAllItem();
-        if (cursor==null){
+
+    private void retrieveData() {
+        Cursor cursor = items_dbHelper.getAllItem();
+        if (cursor == null) {
             return;
         }
         itemsModels.clear();
-        while (cursor.moveToNext()){
-            ItemsModel itemsModel=new ItemsModel();
+        while (cursor.moveToNext()) {
+            ItemsModel itemsModel = new ItemsModel();
             itemsModel.setId(cursor.getInt(0));
             itemsModel.setName(cursor.getString(1));
             itemsModel.setPrice(cursor.getDouble(2));
             itemsModel.setDescription(cursor.getString(3));
             itemsModel.setImage(Uri.parse(cursor.getString(4)));
 
-            itemsModels.add(cursor.getPosition(),itemsModel);
+            itemsModels.add(cursor.getPosition(), itemsModel);
             itemsAdapter.notifyItemChanged(cursor.getPosition());
-            Log.d("MainActivity","Items" +itemsModel.getId()+"added at "+cursor.getPosition());
+            Log.d("MainActivity", "Items" + itemsModel.getId() + "added at " + cursor.getPosition());
         }
     }
-    private void setRecyclerView(){
+
+    private void setRecyclerView() {
         itemsAdapter = new Items_Adapter(itemsModels,
-                (view ,position) -> startActivity(Items_Description.getIntent(
+                (view, position) -> startActivity(Items_Description.getIntent(
                         getApplicationContext(),
                         itemsModels.get(position).getId())
                 ));
-       recyclerView.setLayoutManager(new LinearLayoutManager(this));
-       recyclerView.setAdapter(itemsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(itemsAdapter);
     }
 }

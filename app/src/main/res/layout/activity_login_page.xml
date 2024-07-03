@@ -10,7 +10,7 @@
     android:background="#CDC9CD"
     android:padding="16dp"
     android:gravity="center"
-    tools:context=".Login_Page">
+    tools:context=".LoginPage">
 
 
     <com.google.android.material.textfield.TextInputLayout

@@ -10,8 +10,8 @@
         <item android:id="@+id/nav_contact"
             android:title="Contact"
             android:icon="@drawable/baseline_add_home_24"/>
-        <item android:id="@+id/nav_setting"
-            android:title="Setting"
+        <item android:id="@+id/nav_pur"
+            android:title="Purchased"
             android:icon="@drawable/baseline_add_home_24"/>
     </group>
     <group android:checkableBehavior="single">

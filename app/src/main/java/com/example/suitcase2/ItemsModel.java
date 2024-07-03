@@ -10,7 +10,7 @@ public class ItemsModel {
     private Uri image;
     private boolean purchased;
 
-
+    private String location;
 
     public int getId() {
         return id;
@@ -59,6 +59,15 @@ public class ItemsModel {
     public void setPurchased(boolean purchased)  {
         this.purchased = purchased;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String toString () {
         return "Item{" +
                 "id=" + id +

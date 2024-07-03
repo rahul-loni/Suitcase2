@@ -46,6 +46,8 @@ public class Items_Description extends AppCompatActivity {
         textViewName=findViewById(R.id.dec_name);
         textViewPrice=findViewById(R.id.dec_price);
         textViewDescription=findViewById(R.id.dec_description);
+        buttonEditItem = findViewById(R.id.btnEdit);
+        buttonShareItem=findViewById(R.id.btnShare);
 
         item=new ItemsModel();
         itemsDbHelper=new DatabaseHelper(this);
@@ -94,7 +96,8 @@ public class Items_Description extends AppCompatActivity {
         Intent intent=new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT,"");
-        intent.putExtra(Intent.EXTRA_TEXT,"Check Your Cool Application ");
+        intent.putExtra(Intent.EXTRA_TEXT,"Name: " + item.getName() + "\n" +
+                "Price: " + item.getPrice());
         startActivity(Intent.createChooser(intent,"Share via"));
     }
 }
